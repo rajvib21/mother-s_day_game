@@ -16,32 +16,32 @@ heartImg.src = 'heart.png';
 
 
 // Platform Image Load Check
-platformImg.onload = () => console.log("✅ Platform image loaded successfully!");
-platformImg.onerror = () => console.error("❌ Failed to load platform image. Check path.");
+platformImg.onload = () => console.log("Platform image loaded successfully!");
+platformImg.onerror = () => console.error("Failed to load platform image. ");
 
 // Background Image Load Check
 let bgLoaded = false;
 bgImg.onload = () => {
-    console.log("✅ Background image loaded successfully!");
+    console.log("Background image loaded successfully!");
     bgLoaded = true;
 };
-bgImg.onerror = () => console.error("❌ Failed to load background image. Check path.");
+bgImg.onerror = () => console.error("Failed to load background image. Check path.");
 
 // Winning Background Image Load Check
 let winBgLoaded = false;
 winBgImg.onload = () => {
-    console.log("✅ Winning background image loaded successfully!");
+    console.log("Winning background image loaded successfully!");
     winBgLoaded = true;
 };
-winBgImg.onerror = () => console.error("❌ Failed to load winning background image. Check path.");
+winBgImg.onerror = () => console.error(" Failed to load winning background image. Check path.");
 
 // Player Image Load Check
 let playerImgLoaded = false;
 playerImg.onload = () => {
-    console.log("✅ Player image loaded successfully!");
+    console.log("Player image loaded successfully!");
     playerImgLoaded = true;
 };
-playerImg.onerror = () => console.error("❌ Failed to load player image. Check path.");
+playerImg.onerror = () => console.error(" Failed to load player image. Check path.");
 
 // Selecting canvas and getting 2D context
 const canvas = document.querySelector('canvas');
@@ -54,7 +54,7 @@ canvas.height = 768;
 // Gravity constant
 const gravity = 1.0;
 
-// ✅ Background Class (for seamless background effect)
+//  Background Class (for seamless background effect)
 class Background {
     constructor() {
         this.position = { x: 0, y: 0 };
@@ -86,7 +86,7 @@ class Background {
     }
 }
 
-// ✅ Player Class
+//  Player Class
 class Player {
     constructor() {
         this.position = { x: 100, y: 100 };
@@ -118,7 +118,7 @@ class Player {
     }
 }
 
-// ✅ Platform Class
+//  Platform Class
 class Platform {
     constructor({ x, y }) {
         this.position = { x, y };
@@ -161,7 +161,7 @@ class Heart {
 }
 
 
-// ✅ Note Class (Messages after every 4 hearts)
+// Note Class (Messages after every 4 hearts)
 class Note {
   constructor({ x, y, text }) {
       this.position = { x, y };
@@ -175,7 +175,7 @@ class Note {
   }
 }
 
-// ✅ Create player, platforms, and background
+//  Create player, platforms, and background
 const player = new Player();
 const background = new Background();
 const platforms = [
@@ -200,7 +200,7 @@ const platforms = [
 ];
 
 
-// ✅ Controls
+//  Controls
 const keys = {
     right: { pressed: false },
     left: { pressed: false }
@@ -213,7 +213,7 @@ const messages = [
     
    
     
-    " Yk you also do the same as this penguin—  wins my heart daily just by being YOU! 💕🥺 when you came into my life, you made me feel so loved. 💖 You make my heart smile every day, you make me feel like the luckiest, and that's how you turned my cloudy weather into sunshine! 🌥➡️☀️ (Btw, that sun is me haa 😉🌞)",
+    " Yk you also do the same as this penguin—  wins my heart daily just by being YOU! 💕 sometimes i wonder what would i do without you.🥺 You make my heart smile every day, you make me feel like the luckiest daughter , and that's how you turned my cloudy weather into sunshine! 🌥➡️☀️ (Btw, that sun is me haa 😉🌞)",
   "This was my heart before...",
    " You must be thinking—why is it so dark here? 🌑👀",
     "Yeahhh, you did it again! You won my heart!! 🏆💗"
@@ -250,7 +250,6 @@ function animate() {
     hearts.forEach(heart => heart.draw());
     notes.forEach(note => note.draw());
 
-    // ✅ Check Heart Collection
     hearts.forEach(heart => {
         if (!heart.collected &&
             player.position.x + player.width >= heart.position.x &&
@@ -261,7 +260,7 @@ function animate() {
             console.log("❤️ Heart collected!");
         }
     });
-    // ✅ Player Movement Logic
+
     if (keys.right.pressed && player.position.x < 400) {
         player.velocity.x = 5;
     } else if (keys.left.pressed && player.position.x > 100) {
@@ -282,7 +281,7 @@ function animate() {
         }
     }
 
-    // ✅ Platform Collision Detection
+
     platforms.forEach(platform => {
         if (
             player.position.y + player.height <= platform.position.y &&
@@ -294,9 +293,8 @@ function animate() {
         }
     });
 
-    // ✅ Winning Condition
     if (scrollOffset > 7000) {
-        console.log("🎉 You win!!!!!!");
+        console.log(" You win!");
         background.setWinningBackground(); 
     
         // Delay the redirection by 2 seconds for better effect
@@ -307,10 +305,10 @@ function animate() {
     
 }
 
-// ✅ Start the game immediately
+
 animate();
 
-// ✅ Event Listeners for Movement
+
 addEventListener('keydown', ({ key }) => {
     switch (key) {
         case 'a':
